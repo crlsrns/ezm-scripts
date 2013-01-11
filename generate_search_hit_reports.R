@@ -29,3 +29,7 @@ SR.by.Custodian <- merge (Hits.by.Custodian, Docs.by.Custodian)
 # export final reports
 write.csv(SR.by.Phrase,    file="Search Hit Report by Phrase.csv",    row.names=FALSE)
 write.csv(SR.by.Custodian, file="Search Hit Report by Custodian.csv", row.names=FALSE)
+
+# get distinct-document count
+length(levels(SR$Doc.Id))
+### NB: print to screen since can't really add distinct documents count to CSV file
