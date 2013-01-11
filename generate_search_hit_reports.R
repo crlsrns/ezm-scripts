@@ -15,7 +15,7 @@ Docs.with.single.Phrase <- aggregate(list("Docs with single Phrase"=subSR$Phrase
 
 # build final by-phrase report
 SR.by.Phrase <- merge (Hits.by.Phrase, Docs.by.Phrase)
-SR.by.Phrase <- merge (SR.by.Phrase, Docs.with.single.Phrase)
+SR.by.Phrase <- merge (SR.by.Phrase,   Docs.with.single.Phrase)
 
 # get hits-by-custodian count
 Hits.by.Custodian <- aggregate(list(Hits=SR$Hit.Count), SR["Custodian"], sum)
@@ -29,4 +29,3 @@ SR.by.Custodian <- merge (Hits.by.Custodian, Docs.by.Custodian)
 # export final reports
 write.csv(SR.by.Phrase,    file="Search Hit Report by Phrase.csv",    row.names=FALSE)
 write.csv(SR.by.Custodian, file="Search Hit Report by Custodian.csv", row.names=FALSE)
-
