@@ -1,10 +1,8 @@
 # load data -- this script assumes data frame SR already exists
 
-# get hits-by-phrase count
+# get by-phrase counts
 Hits.by.Phrase <- aggregate(list(Hits=SR$Hit.Count), SR["Phrase"], sum)
-
-# get docs-by-phrase count
-Docs.by.Phrase <- aggregate(list(Docs=SR$Doc.Id), SR["Phrase"], length)
+Docs.by.Phrase <- aggregate(list(Docs=SR$Doc.Id),    SR["Phrase"], length)
 
 # get docs-with-single-phrase count
 DocID.Freq <- as.data.frame(table(SR$Doc.Id))
@@ -17,11 +15,9 @@ Docs.with.single.Phrase <- aggregate(list("Docs with single Phrase"=subSR$Phrase
 SR.by.Phrase <- merge (Hits.by.Phrase, Docs.by.Phrase)
 SR.by.Phrase <- merge (SR.by.Phrase,   Docs.with.single.Phrase)
 
-# get hits-by-custodian count
+# get by-custodian counts
 Hits.by.Custodian <- aggregate(list(Hits=SR$Hit.Count), SR["Custodian"], sum)
-
-# get docs-by-custodian count
-Docs.by.Custodian <- aggregate(list(Docs=SR$Doc.Id), SR["Custodian"], length)
+Docs.by.Custodian <- aggregate(list(Docs=SR$Doc.Id),    SR["Custodian"], length)
 
 # build final by-custodian report
 SR.by.Custodian <- merge (Hits.by.Custodian, Docs.by.Custodian)
