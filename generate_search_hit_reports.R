@@ -27,5 +27,5 @@ write.csv(SR.by.Phrase,    file="Search Hit Report by Phrase.csv",    row.names=
 write.csv(SR.by.Custodian, file="Search Hit Report by Custodian.csv", row.names=FALSE)
 
 # get distinct-document count
-Count.Distinct.Documents <- length(levels(SR$Doc.Id))
+Count.Distinct.Documents <- length(unique(SR$Doc.Id))
 ### NB: print to screen since can't really add distinct documents count to CSV file
